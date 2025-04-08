@@ -7,7 +7,7 @@ from charm.core.math.pairing import hashPair as extractor
 import hashlib
 from modules_chiffrements.group import group
 
-debug = False
+debug = True
 MASTER_KEY = "SuperSecureMasterKey"
 
 class EKPabe(ABEnc):
@@ -101,13 +101,12 @@ def abe_decrypt(attributes,cipher_text):
 
     return kpabe.decrypt(attributes, cipher_text, doctor_key)
 
-# # Define entity trying to decrypt
-# doctor_user = ['DOCTOR']  # Should succeed
-# nurse_user = ['NURSE']  # Should fail
+# Define entity trying to decrypt
+doctor_user = ['DOCTOR']  # Should succeed
 
-# # Define policy for encryption
-# access_policy = "(DOCTOR or TECHNICIAN)"
-# plaintext_msg = "Confidential Medical Report".encode()
+# Define policy for encryption
+access_policy = "(DOCTOR or TECHNICIAN)"
+plaintext_msg = "Confidential Medical Report".encode()
 
-# # Attempt decryption
-# print("second",abe_decrypt(access_policy,doctor_user, abe_encrypt(access_policy,"message")))  
+# Attempt decryption
+print("second",abe_decrypt(access_policy,doctor_user, abe_encrypt(access_policy,"message")))  
