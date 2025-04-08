@@ -123,9 +123,8 @@ def ibe_decrypt(ID,cipher_text):
         print(f"ID: {ID}\ncyphertext: {cipher_text}\ndecrypted: {decrypted}")
     return decrypted
 
-# ID = 'user@email.com'
-# ID2 = 'user2@email.com'
-# msg = "hello world!!!!!"
+ID = 'user@email.com'
+msg = "hello world!!!!!"
 
-# print(type(ibe_encrypt(ID,msg)['U']))
+print(ibe_decrypt(ID,ibe_encrypt(ID,msg)))
    

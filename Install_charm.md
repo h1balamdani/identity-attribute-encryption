@@ -123,11 +123,12 @@ sudo make install
 
 ✅ **Done!**  
 
-[Source.](https://blog.csdn.net/qq_34902437/article/details/137404638)
 Charm-Crypto should now be installed. You can test it with:
 
 ```bash
 python -c "import charm; print('Charm is working ✅')"
 ```
 
-Let me know if you’d like the same formatting adapted for Ubuntu 22.04 LTS or a lightweight version for `pip` installs with minimal native compilation.
+---
+
+[Source.](https://blog.csdn.net/qq_34902437/article/details/137404638)
