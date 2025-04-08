@@ -1,134 +1,43 @@
-## 🔧 Installing Charm-Crypto on Ubuntu 20.04 LTS (VM Setup)
+This repository showcases implementations of three essential cryptographic schemes using the Python [Charm-Crypto](https://github.com/JHUISI/charm) framework:
+- **AES**: Symmetric encryption 
+- **IBE**: Identity-Based Encryption 
+- **ABE**: Attribute-Based Encryption (specifically CP-ABE) 
 
-### 📥 Step 1: Prepare the Virtual Machine
-
-1. **Download Ubuntu 20.04 LTS (64-bit)**  
-   [📎 ubuntu-20.04.6-desktop-amd64.iso](https://releases.ubuntu.com/focal/ubuntu-20.04.6-desktop-amd64.iso)
-
-2. **Create a Virtual Machine**  
-   Use VMware (or any other hypervisor) to install Ubuntu 20.04 using the ISO.
-
-> 💡 _Optional: Install [Visual Studio Code](https://code.visualstudio.com/download) inside the VM for a better coding experience._
+These implementations are designed for secure data handling in environments where confidentiality, identity binding, and fine-grained access control are required (e.g., eHealth systems).
 
 ---
 
-### 📦 Step 2: Install Required Dependencies
-
-Open a terminal and run the following:
-
-```bash
-sudo apt update
-sudo apt install -y gcc make python3 m4 flex bison subversion python3-pip libgmp-dev libssl-dev unzip wget
-```
-
-Create a symlink so you can use `python` as an alias for `python3`:
-
-```bash
-sudo ln -s /usr/bin/python3 /usr/bin/python
-```
-
-Install a required Python package:
-
-```bash
-pip install pyparsing==2.4.6
-```
+## 📁 Repository Structure
+.
+├── install-charm.md      # Step-by-step tutorial for installing Charm-Crypto on Ubuntu 20.04
+├── aes.py                # AES encryption/decryption class and example usage
+├── ibe.py                # IBE encryption/decryption class and example usage
+├── abe.py                # ABE encryption/decryption class and example usage
+├── converter.py          # Charm-Crypto converter utilities
+├── group.py              # Shared group definition for cryptographic operations
+└── README.md             # This file
 
 ---
 
-### 📂 Step 3: Download Required Files
-
-Navigate to your Downloads folder:
-
-```bash
-cd ~/Downloads/
-```
-
-Download the following files:
-
-- **Charm-Crypto (dev branch)**  
-  [📎 charm-dev.zip](https://github.com/JHUISI/charm/archive/refs/heads/dev.zip)
-
-```bash
-wget https://github.com/JHUISI/charm/archive/refs/heads/dev.zip -O charm-dev.zip
-```
-
-- **GMP (GNU Multi-Precision Arithmetic Library)**  
-```bash
-wget https://ftp.gnu.org/gnu/gmp/gmp-5.1.3.tar.bz2
-```
-
-- **PBC (Pairing-Based Cryptography Library)**  
-```bash
-wget https://crypto.stanford.edu/pbc/files/pbc-0.5.14.tar.gz
-```
+## 🧱 Requirements
+- vmware (or any other hypervisor) 
 
 ---
 
-### 🛠️ Step 4: Extract and Install Libraries
-
-Extract all source files to `/usr/local/src`:
-
-```bash
-sudo tar -jxvf gmp-5.1.3.tar.bz2 -C /usr/local/src
-sudo tar -zxvf pbc-0.5.14.tar.gz -C /usr/local/src
-sudo unzip charm-dev.zip -d /usr/local/src
-```
+## 🛠️ Installation
+To install Charm-Crypto on Ubuntu 20.04 LTS, follow the instructions in [`install-charm.md`](./install-charm.md).
 
 ---
 
-### ⚙️ Step 5: Build and Install GMP
+## 🧪 How to Use
+Each file includes example functions demonstrating how to use the implemented class. You can import the classes or run the files directly.
 
-```bash
-cd /usr/local/src/gmp-5.1.3/
-sudo ./configure
-sudo make
-sudo make install
-```
-
-📸 Expected output:
-
-![GMP Build Output](img/image.png)
+### Shared Components
+- `group.py`: Contains common group parameters used across different encryption schemes
+- `converter.py`: Provides utility functions for converting between different data formats required by Charm-Crypto
 
 ---
 
-### ⚙️ Step 6: Build and Install PBC
-
-```bash
-cd /usr/local/src/pbc-0.5.14/
-sudo ./configure
-sudo make
-sudo make install
-```
-
-📸 Expected output:
-
-![PBC Build Output](img/image-1.png)
-
----
-
-### ⚙️ Step 7: Build and Install Charm-Crypto
-
-```bash
-cd /usr/local/src/charm-dev/
-sudo ./configure.sh
-sudo make
-sudo make install
-```
-
-📸 Expected output:
-
-![Charm Build Output](img/image-2.png)
-
----
-
-✅ **Done!**  
-
-Charm-Crypto should now be installed. You can test it with:
-
-```bash
-python -c "import charm; print('Charm is working ✅')"
-```
-
----
-
-[Source.](https://blog.csdn.net/qq_34902437/article/details/137404638)
+## 🤝 Credits
+- [Charm-Crypto by JHU](https://github.com/JHUISI/charm)
+- [Installation guide](https://blog.csdn.net/qq_34902437/article/details/137404638)
