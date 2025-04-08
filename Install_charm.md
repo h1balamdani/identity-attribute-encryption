@@ -1,99 +1,133 @@
-# Install charm-crypto
+## 🔧 Installing Charm-Crypto on Ubuntu 20.04 LTS (VM Setup)
 
-## Install Linux 20.04 LTS
-Download [ubuntu-20.04.6-desktop-amd64.iso](https://releases.ubuntu.com/focal/ubuntu-20.04.6-desktop-amd64.iso)
+### 📥 Step 1: Prepare the Virtual Machine
 
-Install new virtual machine in vmware
+1. **Download Ubuntu 20.04 LTS (64-bit)**  
+   [📎 ubuntu-20.04.6-desktop-amd64.iso](https://releases.ubuntu.com/focal/ubuntu-20.04.6-desktop-amd64.iso)
 
-## From now on everything is on the vm
+2. **Create a Virtual Machine**  
+   Use VMware (or any other hypervisor) to install Ubuntu 20.04 using the ISO.
 
-optional: install [vscode](https://code.visualstudio.com/download)
+> 💡 _Optional: Install [Visual Studio Code](https://code.visualstudio.com/download) inside the VM for a better coding experience._
 
-## Download charm-dev.zip from github
-Via [charm-dev.zip](https://github.com/JHUISI/charm/archive/refs/heads/dev.zip)
+---
 
-## Commands to execute on terminal
-Install necessary packages
-```
+### 📦 Step 2: Install Required Dependencies
+
+Open a terminal and run the following:
+
+```bash
 sudo apt update
-sudo apt install gcc make python3 m4 flex bison subversion python3-pip libgmp-dev libssl-dev -y
+sudo apt install -y gcc make python3 m4 flex bison subversion python3-pip libgmp-dev libssl-dev unzip wget
 ```
-Create a link to python3 (so that python is enough to execute)
-```
+
+Create a symlink so you can use `python` as an alias for `python3`:
+
+```bash
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
-Install python package
-```
+
+Install a required Python package:
+
+```bash
 pip install pyparsing==2.4.6
 ```
-Change directory to Downloads to download and install charm, gmp and pbc
-```
+
+---
+
+### 📂 Step 3: Download Required Files
+
+Navigate to your Downloads folder:
+
+```bash
 cd ~/Downloads/
 ```
-Download GMP
+
+Download the following files:
+
+- **Charm-Crypto (dev branch)**  
+  [📎 charm-dev.zip](https://github.com/JHUISI/charm/archive/refs/heads/dev.zip)
+
+```bash
+wget https://github.com/JHUISI/charm/archive/refs/heads/dev.zip -O charm-dev.zip
 ```
+
+- **GMP (GNU Multi-Precision Arithmetic Library)**  
+```bash
 wget https://ftp.gnu.org/gnu/gmp/gmp-5.1.3.tar.bz2
 ```
-Download PBC
-```
+
+- **PBC (Pairing-Based Cryptography Library)**  
+```bash
 wget https://crypto.stanford.edu/pbc/files/pbc-0.5.14.tar.gz
 ```
-Extract GMP to /usr/loca/src
-```
+
+---
+
+### 🛠️ Step 4: Extract and Install Libraries
+
+Extract all source files to `/usr/local/src`:
+
+```bash
 sudo tar -jxvf gmp-5.1.3.tar.bz2 -C /usr/local/src
-```
-Extract PBC to /usr/loca/src
-```
 sudo tar -zxvf pbc-0.5.14.tar.gz -C /usr/local/src
-```
-Extract charm-dev to /usr/local/src
-```
 sudo unzip charm-dev.zip -d /usr/local/src
 ```
-1. Move to extracted gmp to install it
-```
+
+---
+
+### ⚙️ Step 5: Build and Install GMP
+
+```bash
 cd /usr/local/src/gmp-5.1.3/
-```
-Installation commands:
-```
 sudo ./configure
 sudo make
 sudo make install
 ```
-Expected output:
 
-![alt text](img/image.png)
+📸 Expected output:
 
-2. Move to extracted PBC to install it
-```
-cd ../pbc-0.5.14
-```
-installation commands:
-```
+![GMP Build Output](img/image.png)
+
+---
+
+### ⚙️ Step 6: Build and Install PBC
+
+```bash
+cd /usr/local/src/pbc-0.5.14/
 sudo ./configure
 sudo make
 sudo make install
 ```
-Expected output:
 
-![alt text](img/image-1.png)
+📸 Expected output:
 
-3. Move to extracted charm-dev to install it
-```
-cd ../charm-dev/
-```
-Commands to install:
-```
+![PBC Build Output](img/image-1.png)
+
+---
+
+### ⚙️ Step 7: Build and Install Charm-Crypto
+
+```bash
+cd /usr/local/src/charm-dev/
 sudo ./configure.sh
 sudo make
 sudo make install
 ```
-Expected output:
 
-![alt text](img/image-2.png)
+📸 Expected output:
 
-## Test
+![Charm Build Output](img/image-2.png)
+
+---
+
+✅ **Done!**  
+
+[Source.](https://blog.csdn.net/qq_34902437/article/details/137404638)
+Charm-Crypto should now be installed. You can test it with:
+
+```bash
+python -c "import charm; print('Charm is working ✅')"
 ```
-python tests/test_abe.py
-python tests/test_ibe.py
-```
+
+Let me know if you’d like the same formatting adapted for Ubuntu 22.04 LTS or a lightweight version for `pip` installs with minimal native compilation.
