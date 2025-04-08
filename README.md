@@ -1,10 +1,10 @@
 # 🔐 AES, IBE, and ABE with Charm-Crypto in Python
 
-This repository showcases implementations of three essential cryptographic schemes using Python:
+This repository showcases implementations of three essential cryptographic schemes using the Python [Charm-Crypto](https://github.com/JHUISI/charm) framework:
 
-- **AES**: Symmetric encryption using the [Charm-Crypto](https://github.com/JHUISI/charm) framework
-- **IBE**: Identity-Based Encryption using Charm-Crypto
-- **ABE**: Attribute-Based Encryption (specifically CP-ABE) using Charm-Crypto
+- **AES**: Symmetric encryption 
+- **IBE**: Identity-Based Encryption 
+- **ABE**: Attribute-Based Encryption (specifically CP-ABE) 
 
 These implementations are designed for secure data handling in environments where confidentiality, identity binding, and fine-grained access control are required (e.g., eHealth systems).
 
