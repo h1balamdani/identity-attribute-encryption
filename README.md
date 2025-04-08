@@ -1,10 +1,3 @@
-# identity-attribute-encryption
-A Python-based cryptography project implementing AES, Identity-Based Encryption (IBE), and Attribute-Based Encryption (ABE) using the Charm-Crypto library.
-
-Great! Here's a clean and structured `README.md` that reflects your repository contents and guides users through your project:
-
----
-
 # 🔐 AES, IBE, and ABE with Charm-Crypto in Python
 
 This repository showcases implementations of three essential cryptographic schemes using Python:
